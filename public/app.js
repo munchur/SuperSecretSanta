@@ -14,7 +14,7 @@ createEvent.addEventListener('submit', (event) => {
   post('/login', {gid, time, date, location, message, singles, couples})
 })
 
-//used to send data to server to create/update
+//used to send data to server to create new entries
 //make a string that has the requirements
 function post(path, data){
   return window.fetch(path, {

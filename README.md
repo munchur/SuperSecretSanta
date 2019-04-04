@@ -1,6 +1,7 @@
 # SuperSecretSanta
 Making of a website that aids a group of friends/family who want to do Secret Santa.
 
+http://ec2-18-222-126-155.us-east-2.compute.amazonaws.com/
 
 #current: made MySQL RDS, time to test connection
 
