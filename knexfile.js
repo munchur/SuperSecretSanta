@@ -1,5 +1,5 @@
 var propertiesReader = require('properties-reader')
-var properties = propertiesReader('/resources/mysql.ini')
+var properties = propertiesReader('./resources/mysql.ini')
 
 module.exports = {
   client: 'mysql',

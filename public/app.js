@@ -7,9 +7,9 @@ createEvent.addEventListener('submit', (event) => {
   const gid = generateID.generateID()
   const time = createEvent.querySelector('.time').value
   const date = createEvent.querySelector('.date').value
-  const location = createEvent.querySelector('.location').value
+  const location = createEvent.querySelector('location').value
   const message = createEvent.querySelector('message').value
-  const singles = createEvent.querySelector('.singlesValue').value
+  const singles = createEvent.querySelector('singlesValue').value
   const couples = createEvent.querySelector('couplesValue').value
   post('/login', {gid, time, date, location, message, singles, couples})
 })
