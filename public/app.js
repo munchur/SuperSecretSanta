@@ -1,8 +1,10 @@
 const generateID = require('./generateID')
+
 //take the values from the inputs in the form section
 //then send them to the database
 const createEvent = document.querySelector('.CreateEvent')
 createEvent.addEventListener('submit', (event) => {
+  console.log('starting in app.js')
   event.preventDefault()
   const gid = generateID.generateID()
   const time = createEvent.querySelector('.time').value
@@ -11,7 +13,7 @@ createEvent.addEventListener('submit', (event) => {
   const message = createEvent.querySelector('message').value
   const singles = createEvent.querySelector('singlesValue').value
   const couples = createEvent.querySelector('couplesValue').value
-  post('/login', {gid, time, date, location, message, singles, couples})
+  post('/createEvent', {gid, time, date, location, message, singles, couples})
 })
 
 //used to send data to server to create new entries

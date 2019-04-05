@@ -7,6 +7,5 @@ module.exports = {
     host: properties.get('database.ep'),
     user: properties.get('database.user'),
     password: properties.get('database.password'),
-    database: 'SSSmysqldb'
   }
 }
