@@ -1,10 +1,11 @@
 const knex = require('knex')(require('./knexfile.js'))
+const generateID = require('./generateID.js')
 module.exports = {
   //creates new resource
-  createEvent({gid, time, date, location, message, singles, couples}){
-    console.log('gid: ${gid}, time: ${time}, date: ${date}, location: ${location}, message: ${message}, singles: ${singles}, couples: ${couples}')
+  createEvent({time, date, location, message, singles, couples}){
+    console.log('in dbqueries...')
     return knex('SSSmysqldb').insert({
-      groupID: gid,
+      groupID: generateID.genID(),
       time: time,
       date: date,
       location: location,

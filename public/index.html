@@ -14,24 +14,24 @@
     </p>
 
     <!-- form to ask how many singles and couples -->
-    <form class="CreateEvent" method="post" action="/CreateEvent">
+    <form  action="/CreateEvent" method="post" class="CreateEvent">
       Please put in the amount of singles and couples there will be.<br>
       There needs to be 5 or more in total.<br>
       Time:
-      <input type="time" name="time"><br>
+      <input type="time" class="time" name="time"><br>
       Date:
-      <input type="date" name="date"><br>
+      <input type="date" class="date" name="date"><br>
       Location:
-      <input text="text" name="location"><br>
+      <input text="text" class="location" name="location"><br>
       Message:
-      <input type="text" name="message"><br>
+      <input type="text" class="message" name="message"><br>
       Singles:
-      <input type="number" name="singlesValue"><br>
+      <input type="number" class="singlesValue" name="singlesValue"><br>
       Couples:
-      <input type="number" name="couplesValue"><br>
-      <input type="submit">
+      <input type="number" class="couplesValue" name="couplesValue"><br>
+      <input type="submit" value="submit">
     </form>
-    <script src="/app.js"></script>
+    <script src="./app.js"></script>
     <!-- User sets detail of when, where to send out -->
     <!-- Add on:
     ask for users name, email.

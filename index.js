@@ -4,12 +4,15 @@ const dbqueries = require('./dbqueries')
 const app = express()
 
 app.use(express.static('public'))
-app.use(bodyParser.json)
-/*
-app.post('/createEvent', (req,res) => {
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+///*
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({extended: false})
+app.post('/CreateEvent', urlencodedParser, function(req,res){
+  if(!req.body) return res.sendStatus(400)
   console.log('creating event...')
   dbqueries.createEvent({
-    gid: req.body.gid,
     time: req.body.time,
     date: req.body.date,
     location: req.body.location,
@@ -19,8 +22,8 @@ app.post('/createEvent', (req,res) => {
   })
   .then(() => res.sendStatus(200))
 })
-*/
-
+//*/
+/*
 var propertiesReader = require('properties-reader')
 var properties = propertiesReader('./resources/mysql.ini')
 var mysql = require('mysql')
@@ -36,5 +39,5 @@ connection.connect(function(err){
   if(err) throw err
   else{console.log("db connected")}
 })
-
+*/
 app.listen(3000, ()=> console.log('Server running on port 3000'))
