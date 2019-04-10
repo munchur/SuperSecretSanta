@@ -4,8 +4,8 @@ module.exports = {
   //creates new resource
   createEvent({time, date, location, message, singles, couples}){
     console.log('in dbqueries...')
-    return knex('SSSmysqldb').insert({
-      groupID: generateID.genID(),
+    return knex('basic_info').insert({
+      genID: generateID.genID(),
       time: time,
       date: date,
       location: location,
