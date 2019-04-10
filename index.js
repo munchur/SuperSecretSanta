@@ -6,10 +6,10 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
-///*
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({extended: false})
-app.post('/CreateEvent', urlencodedParser, function(req,res){
+
+//var jsonParser = bodyParser.json()
+//var urlencodedParser = bodyParser.urlencoded({extended: false})
+app.post('/CreateEvent', function(req,res){ //urlencodedParser, function(req,res){
   if(!req.body) return res.sendStatus(400)
   console.log('creating event...')
   dbqueries.createEvent({
@@ -22,7 +22,7 @@ app.post('/CreateEvent', urlencodedParser, function(req,res){
   })
   .then(() => res.sendStatus(200))
 })
-//*/
+
 /*
 var propertiesReader = require('properties-reader')
 var properties = propertiesReader('./resources/mysql.ini')

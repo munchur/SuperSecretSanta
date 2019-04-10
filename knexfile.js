@@ -9,5 +9,9 @@ module.exports = {
     password: properties.get('database.password'),
     database: 'SSSmysqldb',
     port: 3306
-  }
+  },
+    pool: {
+      min: 0,
+      max: 7
+    }
 }
