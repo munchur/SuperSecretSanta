@@ -20,6 +20,7 @@ app.post('/CreateEvent', function(req,res){ //urlencodedParser, function(req,res
     singles: req.body.singles,
     couples: req.body.couples
   })
+  //res.redirect('/makeMatches')
   .then(() => res.sendStatus(200))
 })
 

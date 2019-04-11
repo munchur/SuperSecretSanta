@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('basic_info', function(table){
-    table.integer('genID').notNullable().primary().unique()
+    table.integer('groupID').notNullable().primary().unique()
     table.time('time', 6).notNullable()
     table.date('date')
     table.text('location', 'longtext')

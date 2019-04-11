@@ -5,7 +5,7 @@ module.exports = {
   createEvent({time, date, location, message, singles, couples}){
     console.log('in dbqueries...')
     return knex('basic_info').insert({
-      genID: generateID.genID(),
+      groupID: generateID.genID(),
       time: time,
       date: date,
       location: location,
