@@ -5,7 +5,7 @@ module.exports = {
   createEvent({time, date, location, message, singles, couples}){
     console.log('in dbqueries...')
     return knex('basic_info').insert({
-      groupID: generateID.genID(),
+      groupID: (singles*couples*44),
       time: time,
       date: date,
       location: location,
@@ -13,6 +13,13 @@ module.exports = {
       singles: singles,
       couples: couples})
   }
-  //looks up a resource if there is a match
-  //lookUpID(){}
+}
+
+//looks up a resource if there is a match
+function lookUpID(){
+  console.log('making id')
+  var id = generateID.genID()
+
+  console.log(query)
+  return id;
 }

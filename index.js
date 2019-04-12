@@ -1,16 +1,18 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const dbqueries = require('./dbqueries')
+const path = require('path')
 const app = express()
+const router = express.Router()
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-//var jsonParser = bodyParser.json()
-//var urlencodedParser = bodyParser.urlencoded({extended: false})
-app.post('/CreateEvent', function(req,res){ //urlencodedParser, function(req,res){
+app.post('/CreateEvent', function(req,res){
+  //if emtpy return error
   if(!req.body) return res.sendStatus(400)
+  //else send event info to db
   console.log('creating event...')
   dbqueries.createEvent({
     time: req.body.time,
@@ -20,8 +22,12 @@ app.post('/CreateEvent', function(req,res){ //urlencodedParser, function(req,res
     singles: req.body.singles,
     couples: req.body.couples
   })
-  //res.redirect('/makeMatches')
   .then(() => res.sendStatus(200))
+  res.redirect('/makeMatches')
+})
+
+app.get('/makeMatches', function(req, res){
+  res.render('makeMatches.html')
 })
 
 /*
