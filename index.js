@@ -5,7 +5,21 @@ const path = require('path')
 const app = express()
 const router = express.Router()
 
-app.use(express.static('public'))
+//route middleware: happens with every request
+router.use(function(req, res, next){
+  console.log(req.method, req.url)
+  next()
+})
+
+//home page route
+router.get('/', function(req, res){
+  res.send('At home page.')
+})
+
+
+//regular express that uses router
+//app.use(express.static('public'))
+app.use('/', router)
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
@@ -47,4 +61,6 @@ connection.connect(function(err){
   else{console.log("db connected")}
 })
 */
+
+//start server
 app.listen(3000, ()=> console.log('Server running on port 3000'))
