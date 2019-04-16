@@ -13,7 +13,7 @@ createEvent.addEventListener('submit', (e) => {
   console.log(time, date, location, message, singles, couples)
   post('/CreateEvent', {time, date, location, message, singles, couples})
     .then(({status})=>{
-      if(status === 200) alert('success')
+      if(status === 200) window.location.href = '/CreateEvent'
       else alert('there was an error')
     })
 })
