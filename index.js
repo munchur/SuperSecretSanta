@@ -1,10 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const dbqueries = require('./dbqueries')
-const path = require('path')
+//const path = require('path')
 const app = express()
-const router = express.Router()
+//const router = express.Router()
+//const engines = require('consolidate')
 
+/*
+//router usage starts here
 //route middleware: happens with every request
 router.use(function(req, res, next){
   console.log(req.method, req.url)
@@ -13,15 +16,35 @@ router.use(function(req, res, next){
 
 //home page route
 router.get('/', function(req, res){
-  res.send('At home page.')
+  console.log('routers home')
+  res.sendFile(path.join(__dirname + '/public'))
 })
 
 
-//regular express that uses router
-//app.use(express.static('public'))
-app.use('/', router)
-app.use(bodyParser.urlencoded({extended:false}))
+router.get('/CreateEvent', function(req, res){
+  console.log('routers createEvent')
+  res.sendFile(path.join(__dirname + '/public/makeMatches.html'))
+})
+*/
+
+//express usage starts here
+app.use(express.static(__dirname + '/views'))
+//app.use(express.static(__dirname + '/public/index.html'))
+//app.use('/', router)
+//app.engine('html', engines.mustache)
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
+//listens for a post request /CreateEvent
+//MAYBE DO: app.route to do post and get requests
+app.get('/CreateEvent', function(req, res){
+  console.log('get /createevent')
+  res.sendFile(__dirname + '/views/makeMatches.html')
+})
+
+app.get('/', function(req,res){
+  res.sendFile(__dirname + '/views/index.html')
+})
 
 app.post('/CreateEvent', function(req,res){
   //if emtpy return error
@@ -37,30 +60,8 @@ app.post('/CreateEvent', function(req,res){
     couples: req.body.couples
   })
   .then(() => res.sendStatus(200))
-  res.redirect('/makeMatches')
+  //.then(() => res.redirect('/CreateEvent'))
 })
-
-app.get('/makeMatches', function(req, res){
-  res.render('makeMatches.html')
-})
-
-/*
-var propertiesReader = require('properties-reader')
-var properties = propertiesReader('./resources/mysql.ini')
-var mysql = require('mysql')
-var connection = mysql.createConnection({
-  host: properties.get('database.ep'),
-  user: properties.get('database.user'),
-  password: properties.get('database.password'),
-  database: 'SSSmysqldb',
-  port: 3306
-})
-connection.connect(function(err){
-  //if(err){console.log('did not connect')}
-  if(err) throw err
-  else{console.log("db connected")}
-})
-*/
 
 //start server
 app.listen(3000, ()=> console.log('Server running on port 3000'))

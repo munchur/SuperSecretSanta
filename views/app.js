@@ -12,12 +12,15 @@ createEvent.addEventListener('submit', (e) => {
   const couples = createEvent.querySelector('.couplesValue').value
   console.log(time, date, location, message, singles, couples)
   post('/CreateEvent', {time, date, location, message, singles, couples})
+    .then(({status})=>{
+      if(status === 200) alert('success')
+      else alert('there was an error')
+    })
 })
 
 //used to send data to server to create new entries
 //make a string that has the requirements
 function post(path, data){
-  console.log('post enter')
   return window.fetch(path, {
     method: 'POST',
     headers: {
