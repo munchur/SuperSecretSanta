@@ -11,11 +11,11 @@ createEvent.addEventListener('submit', (err) => {
   const singles = createEvent.querySelector('.singlesValue').value
   const couples = createEvent.querySelector('.couplesValue').value
   console.log(time, date, location, message, singles, couples)
-  post('/CreateEvent', {time, date, location, message, singles, couples})
-    .then(({status})=>{
-      if(status === 200) window.location.href = '/CreateEvent'
-      else alert('there was an error, please try again.')
-    })
+  //post('/CreateEvent', {time, date, location, message, singles, couples})
+//    .then(({status})=>{
+//      if(status === 200) window.location.href = '/CreateEvent'
+//      else alert('there was an error, please try again.')
+//    })
 })
 
 //used to send data to server to create new entries
@@ -32,8 +32,13 @@ function post(path, data){
 }
 
 
-//make sure the user fills out the form appropriatly
-function validateFormOne(){
-  //values that can't be empty: time, date, singles, and couples
-  document.forms["formOne"][].value;
+//make sure that the user doesn't input less than 5 people
+function validateGroupTotal(form){
+  //form returns a string orginally
+  var singles = parseInt(form['singlesValue'].value)
+  var couples = parseInt(form['couplesValue'].value)
+  if((singles+(couples*2)) < 5){
+      alert("Can't have less than 5 people.")
+      return false
+  }
 }

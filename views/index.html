@@ -14,23 +14,24 @@
     </p>
 
     <!-- form to ask how many singles and couples -->
-    <form  action="/CreateEvent" method="post" class="CreateEvent" onsubmit="return validateFormOne()" name = "formOne">
+    <form  action="/CreateEvent" method="post" class="CreateEvent" onsubmit="return validateGroupTotal(this)">
       Please put in the amount of singles and couples there will be.<br>
       There needs to be 5 or more in total.<br>
       Time:
-      <input type="time" class="time" name="time"><br>
+      <input type="time" class="time" name="time" required><br>
       Date:
-      <input type="date" class="date" name="date"><br>
+      <input type="date" class="date" name="date" required><br>
       Location:
       <input text="text" class="location" name="location"><br>
       Message:
       <input type="text" class="message" name="message"><br>
       Singles:
-      <input type="number" class="singlesValue" name="singlesValue"><br>
+      <input type="number" class="singlesValue" name="singlesValue" required><br>
       Couples:
-      <input type="number" class="couplesValue" name="couplesValue"><br>
+      <input type="number" class="couplesValue" name="couplesValue" required><br>
       <input type="submit" value="submit">
     </form>
+    <p id="errorMessageOne"></p>
     <script src="/app.js"></script>
   </body>
 </html>
