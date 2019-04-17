@@ -1,9 +1,9 @@
 //take the values from the inputs in the form section
 //then send them to the database
 const createEvent = document.querySelector('.CreateEvent')
-createEvent.addEventListener('submit', (e) => {
+createEvent.addEventListener('submit', (err) => {
   console.log('starting in app.js')
-  e.preventDefault()
+  err.preventDefault()
   const time = createEvent.querySelector('.time').value
   const date = createEvent.querySelector('.date').value
   const location = createEvent.querySelector('.location').value
@@ -14,7 +14,7 @@ createEvent.addEventListener('submit', (e) => {
   post('/CreateEvent', {time, date, location, message, singles, couples})
     .then(({status})=>{
       if(status === 200) window.location.href = '/CreateEvent'
-      else alert('there was an error')
+      else alert('there was an error, please try again.')
     })
 })
 
@@ -29,4 +29,11 @@ function post(path, data){
     },
     body: JSON.stringify(data)
   })
+}
+
+
+//make sure the user fills out the form appropriatly
+function validateFormOne(){
+  //values that can't be empty: time, date, singles, and couples
+  document.forms["formOne"][].value;
 }
