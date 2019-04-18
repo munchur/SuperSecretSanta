@@ -11,11 +11,11 @@ textfield for user to add any other additional info.
     <link rel="stylesheet" href="styles.css">
     <title>Super Secret Santa(in progress)</title>
   </head>
-  <body>
+  <!-- load the appropriate amount of input in form -->
+  <body onload="loadValues()">
     <h1>Make Matches Page</h1>
-    <!-- need to retrieve the amount of number of singles and couples -->
-    <form method="post" action="/makeMatches">
-      <input type="text" class="personsName">
-    </form>
+    <!-- this is where the user puts in the group's name and emails -->
+    <form method="post" action="/makeMatches" id="container"></form>
+    <script href="/app.js"></script>
   </body>
 </html>

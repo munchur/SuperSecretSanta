@@ -11,11 +11,20 @@ createEvent.addEventListener('submit', (err) => {
   const singles = createEvent.querySelector('.singlesValue').value
   const couples = createEvent.querySelector('.couplesValue').value
   console.log(time, date, location, message, singles, couples)
-  //post('/CreateEvent', {time, date, location, message, singles, couples})
-//    .then(({status})=>{
-//      if(status === 200) window.location.href = '/CreateEvent'
-//      else alert('there was an error, please try again.')
-//    })
+/* keep, just commented out temporarily
+  post('/CreateEvent', {time, date, location, message, singles, couples})
+    .then(({status})=>{
+      if(status === 200) window.location.href = '/CreateEvent'
+      else alert('there was an error, please try again.')
+    })
+*/
+
+  //NOTE: maybe use window.sessionStorage, stores data for one session
+  //use to avoid global variables
+  sessionStorage.setItem('singleValue', parseInt(singles))
+  sessionStorage.setItem('coupleValue', parseInt(couples))
+  //just automatically go to the '/CreateEvent' page after successfully the form
+  window.location.href = '/CreateEvent'
 })
 
 //used to send data to server to create new entries
@@ -41,4 +50,13 @@ function validateGroupTotal(form){
       alert("Can't have less than 5 people.")
       return false
   }
+}
+
+//load the values from sessionStorage and help add input children to
+//the form id 'container' in makeMatches.html
+function loadValues(){
+  const singleValue = sessionStorage.getItem('singleValue')
+  const coupleValue = sessionStorage.getItem('coupleValue')
+
+
 }
