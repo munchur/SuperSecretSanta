@@ -1,7 +1,7 @@
 //take the values from the inputs in the form section
 //then send them to the database
-const createEvent = document.querySelector('.CreateEvent')
-createEvent.addEventListener('submit', (err) => {
+const createEvent = document.querySelector('.createEvent')
+createEvent.addEventListener('submit', function(err){
   console.log('starting in app.js')
   err.preventDefault()
   const time = createEvent.querySelector('.time').value
@@ -50,13 +50,4 @@ function validateGroupTotal(form){
       alert("Can't have less than 5 people.")
       return false
   }
-}
-
-//load the values from sessionStorage and help add input children to
-//the form id 'container' in makeMatches.html
-function loadValues(){
-  const singleValue = sessionStorage.getItem('singleValue')
-  const coupleValue = sessionStorage.getItem('coupleValue')
-
-
 }
