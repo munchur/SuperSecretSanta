@@ -12,30 +12,47 @@ function loadValues(){
   //add title: couples and add to mainElement
   var coupText = document.createTextNode('Couples Information\n')
 
-  //add singText and coupText children
+  //add single text node
+  mainElement.appendChild(singText)
+  mainElement.appendChild(document.createElement('br'))
+
+  //add singles input fields
   for(i=0;i<singleValue;i++){
     //create a text node
-    singText.appendChild(document.createTextNode('Single '+(i+1)+' name'))
+    mainElement.appendChild(document.createTextNode('Single '+(i+1)+' name'))
     //create input create by creating the input element then set it
-    var input = document.createElement('input')
-    input.type = 'text'
-    input.name = 'single'+i
-    singText.appendChild(input)
-    singText.appendChild(document.createElement('br'))
+    var inputName = document.createElement('input')
+    inputName.type = 'text'
+    inputName.name = 'single'+i
+    mainElement.appendChild(inputName)
+    mainElement.appendChild(document.createTextNode('Email'))
+    var inputEmail = document.createElement('input')
+    inputEmail.type = 'email'
+    inputEmail.name = 'single'+i+'email'
+    mainElement.appendChild(inputEmail)
+    mainElement.appendChild(document.createElement('br'))
   }
 
+  //add couple text node
+  mainElement.appendChild(coupText)
+  mainElement.appendChild(document.createElement('br'))
+
+  //add couples input fields
   for(i=0;i<coupleValue;i++){
     //create a text node
-    coupText.appendChild(document.createTextNode('Couple '+(i+1)+' name'))
+    mainElement.appendChild(document.createTextNode('Couple '+(i+1)+' name'))
     //create input create by creating the input element then set it
-    var input = document.createElement('input')
-    input.type = 'text'
-    input.name = 'single'+i
-    coupText.appendChild(input)
-    coupText.appendChild(document.createElement('br'))
+    var inputName = document.createElement('input')
+    inputName.type = 'text'
+    inputName.name = 'single'+i
+    mainElement.appendChild(inputName)
+    mainElement.appendChild(document.createTextNode('Email'))
+    var inputEmail = document.createElement('input')
+    inputEmail.type = 'email'
+    inputEmail.name = 'couple'+i+'email'
+    mainElement.appendChild(inputEmail)
+    mainElement.appendChild(document.createElement('br'))
   }
 
-  //add singtext and coupText to the parent mainElement
-  mainElement.appendChild(singText)
-  mainElement.appendChild(coupText)
+
 }
