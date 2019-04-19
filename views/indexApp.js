@@ -22,7 +22,7 @@ createEvent.addEventListener('submit', function(err){
   //NOTE: maybe use window.sessionStorage, stores data for one session
   //use to avoid global variables
   sessionStorage.setItem('singleValue', parseInt(singles))
-  sessionStorage.setItem('coupleValue', parseInt(couples))
+  sessionStorage.setItem('coupleValue', parseInt(couples*2))
   //just automatically go to the '/CreateEvent' page after successfully the form
   window.location.href = '/CreateEvent'
 })
