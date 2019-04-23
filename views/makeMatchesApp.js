@@ -54,5 +54,10 @@ function loadValues(){
     mainElement.appendChild(document.createElement('br'))
   }
 
+  //add the submit button
+  var submitButton = document.createElement('input')
+  submitButton.type = 'submit'
+  submitButton.value = 'submit'
+  mainElement.appendChild(submitButton)
 
 }
