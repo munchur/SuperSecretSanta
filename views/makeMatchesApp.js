@@ -5,14 +5,15 @@ saveMatches.addEventListener('submit', function(err){
   const coupleValue = sessionStorage.getItem('coupleValue') //already doubled
   err.preventDefault()
   //loop to get values of singles and couples
-  var singleData = {}
-  var coupleData = {}
+  var singleData = []
+  var coupleData = []
   if(singleValue != 0){
     //value names are single(number) for name inputs
     //value names are single(number)email for email inputs
     for(i=0; i<singleValue+1; ++i){
       const name = saveMatches.querySelector('single'+i).value
       const email = saveMatches.querySelector('single'+i+'email').value
+      singleData.push({name: name, email: email})
     }
   }
   if(coupleValue != 0){
@@ -20,8 +21,23 @@ saveMatches.addEventListener('submit', function(err){
     //value names are couple(number)email for email inputs
     const name = saveMatches.querySelector('couple'+i).value
     const email = saveMatches.querySelector('couple'+i+'email').value
+    coupleData.push({name: name, email:email})
   }
+
+  post('/makeMatches',singleData, coupleData)
+  window.location.href = '/ThankYou'
 })
+
+function post(path, data){
+  return window.fetch(path, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+}
 
 
 //load the values from sessionStorage and help add input children to

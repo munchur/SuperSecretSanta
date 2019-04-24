@@ -42,6 +42,11 @@ app.get('/CreateEvent', function(req, res){
   res.sendFile(__dirname + '/views/makeMatches.html')
 })
 
+app.get('/ThankYou', function(req, res){
+  console.log('get /ThankYou')
+  res.sendFile(__dirname + '/views/thankyou.html')
+})
+
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/views/index.html')
 })
@@ -61,6 +66,10 @@ app.post('/CreateEvent', function(req,res){
   })
   .then(() => res.sendStatus(200))
   //.then(() => res.redirect('/CreateEvent'))
+})
+
+app.post('/makeMatches', function(req, res){
+  console.log('making matches')
 })
 
 //start server
