@@ -12,7 +12,18 @@ module.exports = {
       message: message,
       singles: singles,
       couples: couples})
+  },
+
+  makeMatches({singleData, coupleData}){
+    console.log('in makeMatches...')
+    const mixAndMatches = mixAndMatch(singleData, coupleData)
+    //use knex to insert 
   }
+}
+
+//TODO: function to mix and match couples
+function mixAndMatch({singleData, coupleData}){
+  //should return a mix and matches
 }
 
 //looks up a resource if there is a match

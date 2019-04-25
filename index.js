@@ -65,11 +65,15 @@ app.post('/CreateEvent', function(req,res){
     couples: req.body.couples
   })
   .then(() => res.sendStatus(200))
-  //.then(() => res.redirect('/CreateEvent'))
 })
 
 app.post('/makeMatches', function(req, res){
   console.log('making matches')
+  dbqueries.makeMatches({
+    singleData: req.body.singleData,
+    coupleData: req.body.coupleData
+  })
+  .then(() => res.sendStatus(200))
 })
 
 //start server
