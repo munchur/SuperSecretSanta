@@ -16,10 +16,7 @@ saveMatches.addEventListener('submit', function(err){
     name:,
     email:
   },
-  {
-  name:,
-  email:
-  }, //repeat
+  //repeat previous object
   ]
   */
   var data = []
@@ -32,25 +29,35 @@ saveMatches.addEventListener('submit', function(err){
     message: sessionStorage.getItem('message')
   })
 
-  //loop to get values of singles and couples
+  //value number will start at 1 and end at the same number as
+  //single/couple value
+  //loop to get values of singles and couples and put them into objects
+  //that will be stored into an array called data
   if(singleValue != 0){
     //value names are single(number) for name inputs
     //value names are single(number)email for email inputs
-    for(i=0; i<singleValue+1; ++i){
-      const name = saveMatches.querySelector('single'+i).value
-      const email = saveMatches.querySelector('single'+i+'email').value
-      data.push({name: name, email: email})
+    for(i=1; i<=singleValue; i++){
+      if(saveMatches.querySelector('.single'+i).value){
+        const name = saveMatches.querySelector('.single'+i).value
+        const email = saveMatches.querySelector('.single'+i+'email').value
+        console.log(name, email)
+        data.push({name: name, email: email})
+      }
     }
   }
   if(coupleValue != 0){
     //value names are couple(number) for name inputs
     //value names are couple(number)email for email inputs
-    const name = saveMatches.querySelector('couple'+i).value
-    const email = saveMatches.querySelector('couple'+i+'email').value
-    data.push({name: name, email:email})
+    for(i=1; i<=coupleValue; i++){
+      if(saveMatches.querySelector('.couple'+i).value){
+        const name = saveMatches.querySelector('.couple'+i).value
+        const email = saveMatches.querySelector('.couple'+i+'email').value
+        data.push({name: name, email:email})
+      }
+    }
   }
 
-  post('/makeMatches', data)
+  //post('/makeMatches', data)
   window.location.href = '/ThankYou'
 })
 
@@ -85,22 +92,23 @@ function loadValues(){
     mainElement.appendChild(singText)
     mainElement.appendChild(document.createElement('br'))
 
-
+    //value number will start at 1 and end at the same number as
+    //single/couple value
     //add singles input fields
-    for(i=0;i<singleValue+1;i++){
+    for(i=1;i<=singleValue;i++){
       //create a text node
-      mainElement.appendChild(document.createTextNode('Single '+(i+1)+' name'))
+      mainElement.appendChild(document.createTextNode('Single '+i+' name'))
       //create input create by creating the input element then set it
       var inputName = document.createElement('input')
       inputName.type = 'text'
       inputName.name = 'single'+i
-      inputName.class = 'single'+i
+      inputName.className = 'single'+i
       mainElement.appendChild(inputName)
       mainElement.appendChild(document.createTextNode('Email'))
       var inputEmail = document.createElement('input')
       inputEmail.type = 'email'
       inputEmail.name = 'single'+i+'email'
-      inputEmail.class = 'single'+i+'email'
+      inputEmail.className = 'single'+i+'email'
       mainElement.appendChild(inputEmail)
       mainElement.appendChild(document.createElement('br'))
     }
@@ -112,20 +120,20 @@ function loadValues(){
     mainElement.appendChild(document.createElement('br'))
 
     //add couples input fields
-    for(i=0;i<coupleValue+1;i++){
+    for(i=1;i<=coupleValue;i++){
       //create a text node
       mainElement.appendChild(document.createTextNode('Couple '+i+' name'))
       //create input create by creating the input element then set it
       var inputName = document.createElement('input')
       inputName.type = 'text'
-      inputName.name = 'single'+i
-      inputName.class = 'single'+i
+      inputName.name = 'couple'+i
+      inputName.className = 'couple'+i
       mainElement.appendChild(inputName)
       mainElement.appendChild(document.createTextNode('Email'))
       var inputEmail = document.createElement('input')
       inputEmail.type = 'email'
       inputEmail.name = 'couple'+i+'email'
-      inputEmail.class = 'couple'+i+'email'
+      inputEmail.className = 'couple'+i+'email'
       mainElement.appendChild(inputEmail)
       mainElement.appendChild(document.createElement('br'))
     }
