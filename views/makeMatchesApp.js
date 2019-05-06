@@ -4,16 +4,42 @@ saveMatches.addEventListener('submit', function(err){
   const singleValue = sessionStorage.getItem('singleValue')
   const coupleValue = sessionStorage.getItem('coupleValue') //already doubled
   err.preventDefault()
+
+  /* HOW DATA SHOULD LOOK
+  [
+  {time:,
+  date:
+  location:
+  message:
+  },
+  {
+    name:,
+    email:
+  },
+  {
+  name:,
+  email:
+  }, //repeat
+  ]
+  */
+  var data = []
+
+  //position 0 should be the time, date, location, and message
+  data.push({
+    time: sessionStorage.getItem('time'),
+    date: sessionStorage.getItem('date'),
+    location: sessionStorage.getItem('location'),
+    message: sessionStorage.getItem('message')
+  })
+
   //loop to get values of singles and couples
-  var singleData = []
-  var coupleData = []
   if(singleValue != 0){
     //value names are single(number) for name inputs
     //value names are single(number)email for email inputs
     for(i=0; i<singleValue+1; ++i){
       const name = saveMatches.querySelector('single'+i).value
       const email = saveMatches.querySelector('single'+i+'email').value
-      singleData.push({name: name, email: email})
+      data.push({name: name, email: email})
     }
   }
   if(coupleValue != 0){
@@ -21,10 +47,10 @@ saveMatches.addEventListener('submit', function(err){
     //value names are couple(number)email for email inputs
     const name = saveMatches.querySelector('couple'+i).value
     const email = saveMatches.querySelector('couple'+i+'email').value
-    coupleData.push({name: name, email:email})
+    data.push({name: name, email:email})
   }
 
-  post('/makeMatches',singleData, coupleData)
+  post('/makeMatches', data)
   window.location.href = '/ThankYou'
 })
 
