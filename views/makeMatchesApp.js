@@ -10,23 +10,30 @@ saveMatches.addEventListener('submit', function(err){
   {time:,
   date:
   location:
-  message:
+  message:,
+  singleValue:,
+  coupleValue:
   },
-  {
-    name:,
-    email:
-  },
-  //repeat previous object
+  [{
+    name:, email:
+  },...],
+  [{
+    name:, email:
+  },...]
   ]
   */
   var data = []
+  var singleGroup = []
+  var coupleGroup = []
 
   //position 0 should be the time, date, location, and message
   data.push({
     time: sessionStorage.getItem('time'),
     date: sessionStorage.getItem('date'),
     location: sessionStorage.getItem('location'),
-    message: sessionStorage.getItem('message')
+    message: sessionStorage.getItem('message'),
+    singleValue: singleValue,
+    coupleValue: coupleValue
   })
 
   //value number will start at 1 and end at the same number as
@@ -41,7 +48,7 @@ saveMatches.addEventListener('submit', function(err){
         const name = saveMatches.querySelector('.single'+i).value
         const email = saveMatches.querySelector('.single'+i+'email').value
         console.log(name, email)
-        data.push({name: name, email: email})
+        singleGroup.push({name: name, email: email})
       }
     }
   }
@@ -52,12 +59,16 @@ saveMatches.addEventListener('submit', function(err){
       if(saveMatches.querySelector('.couple'+i).value){
         const name = saveMatches.querySelector('.couple'+i).value
         const email = saveMatches.querySelector('.couple'+i+'email').value
-        data.push({name: name, email:email})
+        coupleGroup.push({name: name, email:email})
       }
     }
+
+    //push couple and single array into data
+    data.push(singleGroup)
+    data.push(coupleGroup)
   }
 
-  //post('/makeMatches', data)
+  post('/makeMatches', data)
   window.location.href = '/ThankYou'
 })
 
@@ -142,6 +153,6 @@ function loadValues(){
   //add the submit button
   var submitButton = document.createElement('input')
   submitButton.type = 'submit'
-  submitButton.value = 'submit'
+  submitButton.value = 'Submit'
   mainElement.appendChild(submitButton)
 }
