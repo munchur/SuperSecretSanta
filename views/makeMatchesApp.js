@@ -1,72 +1,6 @@
+/*
 const saveMatches = document.querySelector('.makeMatches')
 saveMatches.addEventListener('submit', function(err){
-  console.log('saving matches.')
-  const singleValue = sessionStorage.getItem('singleValue')
-  const coupleValue = sessionStorage.getItem('coupleValue') //already doubled
-  err.preventDefault()
-
-  /* HOW DATA SHOULD LOOK
-  [
-  {time:,
-  date:
-  location:
-  message:,
-  singleValue:,
-  coupleValue:
-  },
-  [{
-    name:, email:
-  },...],
-  [{
-    name:, email:
-  },...]
-  ]
-  */
-  var data = []
-  var singleGroup = []
-  var coupleGroup = []
-
-  //position 0 should be the time, date, location, and message
-  data.push({
-    time: sessionStorage.getItem('time'),
-    date: sessionStorage.getItem('date'),
-    location: sessionStorage.getItem('location'),
-    message: sessionStorage.getItem('message'),
-    singleValue: singleValue,
-    coupleValue: coupleValue
-  })
-
-  //value number will start at 1 and end at the same number as
-  //single/couple value
-  //loop to get values of singles and couples and put them into objects
-  //that will be stored into an array called data
-  if(singleValue != 0){
-    //value names are single(number) for name inputs
-    //value names are single(number)email for email inputs
-    for(i=1; i<=singleValue; i++){
-      if(saveMatches.querySelector('.single'+i).value){
-        const name = saveMatches.querySelector('.single'+i).value
-        const email = saveMatches.querySelector('.single'+i+'email').value
-        console.log(name, email)
-        singleGroup.push({name: name, email: email})
-      }
-    }
-  }
-  if(coupleValue != 0){
-    //value names are couple(number) for name inputs
-    //value names are couple(number)email for email inputs
-    for(i=1; i<=coupleValue; i++){
-      if(saveMatches.querySelector('.couple'+i).value){
-        const name = saveMatches.querySelector('.couple'+i).value
-        const email = saveMatches.querySelector('.couple'+i+'email').value
-        coupleGroup.push({name: name, email:email})
-      }
-    }
-
-    //push couple and single array into data
-    data.push(singleGroup)
-    data.push(coupleGroup)
-  }
 
   post('/makeMatches', data)
   window.location.href = '/ThankYou'
@@ -82,7 +16,7 @@ function post(path, data){
     body: JSON.stringify(data)
   })
 }
-
+*/
 
 //load the values from sessionStorage and help add input children to
 //the form id 'container' in makeMatches.html
@@ -156,3 +90,57 @@ function loadValues(){
   submitButton.value = 'Submit'
   mainElement.appendChild(submitButton)
 }
+
+
+/*
+console.log('saving matches.')
+const singleValue = sessionStorage.getItem('singleValue')
+const coupleValue = sessionStorage.getItem('coupleValue') //already doubled
+err.preventDefault()
+
+var data = []
+var singleGroup = []
+var coupleGroup = []
+
+//position 0 should be the time, date, location, and message
+data.push({
+  time: sessionStorage.getItem('time'),
+  date: sessionStorage.getItem('date'),
+  location: sessionStorage.getItem('location'),
+  message: sessionStorage.getItem('message'),
+  singleValue: singleValue,
+  coupleValue: coupleValue
+})
+
+//value number will start at 1 and end at the same number as
+//single/couple value
+//loop to get values of singles and couples and put them into objects
+//that will be stored into an array called data
+if(singleValue != 0){
+  //value names are single(number) for name inputs
+  //value names are single(number)email for email inputs
+  for(i=1; i<=singleValue; i++){
+    if(saveMatches.querySelector('.single'+i).value){
+      const name = saveMatches.querySelector('.single'+i).value
+      const email = saveMatches.querySelector('.single'+i+'email').value
+      console.log(name, email)
+      singleGroup.push({name: name, email: email})
+    }
+  }
+}
+if(coupleValue != 0){
+  //value names are couple(number) for name inputs
+  //value names are couple(number)email for email inputs
+  for(i=1; i<=coupleValue; i++){
+    if(saveMatches.querySelector('.couple'+i).value){
+      const name = saveMatches.querySelector('.couple'+i).value
+      const email = saveMatches.querySelector('.couple'+i+'email').value
+      coupleGroup.push({name: name, email:email})
+    }
+  }
+
+  //push couple and single array into data
+  data.push(singleGroup)
+  data.push(coupleGroup)
+}
+*/

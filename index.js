@@ -67,10 +67,19 @@ app.post('/CreateEvent', function(req,res){
   .then(() => res.sendStatus(200))
 })
 
+
 app.post('/makeMatches', function(req, res){
+  //TODO: later on add express-validator to help validate data
   console.log('making matches')
-  //console.log(req.body[0].date)
-  //console.log(req.body[1])
+  console.log(req.body.single1)//works
+  //header
+  console.log(req.headers)
+  //capture the encoded form data
+  req.on('data', function(data){
+    console.log(data.toString())
+  })
+
+  /*
   dbqueries.makeMatches({
     time: req.body[0].time,
     date: req.body[0].date,
@@ -81,7 +90,8 @@ app.post('/makeMatches', function(req, res){
     //singleGroup: req.body[1],
     //coupleGroup: req.body[2]
   })
-  .then(() => res.sendStatus(200))
+  .then(() => res.sendStatus(200))*/
+  res.sendStatus(200)
 })
 
 //start server
