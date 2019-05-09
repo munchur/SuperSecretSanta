@@ -18,6 +18,15 @@ function post(path, data){
 }
 */
 
+window.fetch('/makeMatches').then(function(response){
+  if(response.status == 200){
+    console.log('Success!')
+    window.location.href = '/ThankYou'
+  }else if(response.status == 400){
+    console.log('Failure!')
+  }else{console.log('Different Status')}
+})
+
 //load the values from sessionStorage and help add input children to
 //the form id 'container' in makeMatches.html
 function loadValues(){
@@ -26,46 +35,6 @@ function loadValues(){
 
   //this should be the <form>
   var mainElement = document.getElementById('container')
-
-  //adding hidden input to have the values of time, date,
-  //location, message, singlevalue, couplevalue
-  //Using this method so these valus can be passed with the post request
-  var time = document.createElement('input')
-  time.type = 'hidden'
-  time.name = 'time'
-  time.setAttribute('value', sessionStorage.getItem('time'))
-  var date = document.createElement('input')
-  date.type = 'hidden'
-  date.name = 'date'
-  date.setAttribute('value', sessionStorage.getItem('date'))
-  var location = document.createElement('input')
-  location.type = 'hidden'
-  location.name = 'location'
-  location.setAttribute('value', sessionStorage.getItem('location'))
-  var message = document.createElement('input')
-  message.type = 'hidden'
-  message.name = 'name'
-  message.setAttribute('value', sessionStorage.getItem('message'))
-  var single = document.createElement('input')
-  single.type = 'hidden'
-  single.name = 'single'
-  single.setAttribute('value', singleValue)
-  var couple = document.createElement('input')
-  couple.type = 'hidden'
-  couple.type = 'couple'
-  couple.setAttribute('value', coupleValue)
-  mainElement.appendChild(time)
-  mainElement.appendChild(document.createElement('br'))
-  mainElement.appendChild(date)
-  mainElement.appendChild(document.createElement('br'))
-  mainElement.appendChild(location)
-  mainElement.appendChild(document.createElement('br'))
-  mainElement.appendChild(message)
-  mainElement.appendChild(document.createElement('br'))
-  mainElement.appendChild(single)
-  mainElement.appendChild(document.createElement('br'))
-  mainElement.appendChild(couple)
-  mainElement.appendChild(document.createElement('br'))
 
 
   //add title: singles and add to mainElement
@@ -130,6 +99,48 @@ function loadValues(){
   submitButton.type = 'submit'
   submitButton.value = 'Submit'
   mainElement.appendChild(submitButton)
+
+  //adding hidden input to have the values of time, date,
+  //location, message, singlevalue, couplevalue
+  //Using this method so these valus can be passed with the post request
+  var time = document.createElement('input')
+  time.type = 'hidden'
+  time.name = 'time'
+  time.setAttribute('value', sessionStorage.getItem('time'))
+  var date = document.createElement('input')
+  date.type = 'hidden'
+  date.name = 'date'
+  date.setAttribute('value', sessionStorage.getItem('date'))
+  var location = document.createElement('input')
+  location.type = 'hidden'
+  location.name = 'location'
+  location.setAttribute('value', sessionStorage.getItem('location'))
+  var message = document.createElement('input')
+  message.type = 'hidden'
+  message.name = 'name'
+  message.setAttribute('value', sessionStorage.getItem('message'))
+  var single = document.createElement('input')
+  single.type = 'hidden'
+  single.name = 'singleValue'
+  single.setAttribute('value', singleValue)
+  var couple = document.createElement('input')
+  couple.type = 'hidden'
+  couple.name = 'coupleValue'
+  couple.setAttribute('value', coupleValue)
+  mainElement.appendChild(time)
+  mainElement.appendChild(document.createElement('br'))
+  mainElement.appendChild(date)
+  mainElement.appendChild(document.createElement('br'))
+  mainElement.appendChild(location)
+  mainElement.appendChild(document.createElement('br'))
+  mainElement.appendChild(message)
+  mainElement.appendChild(document.createElement('br'))
+  mainElement.appendChild(single)
+  mainElement.appendChild(document.createElement('br'))
+  mainElement.appendChild(couple)
+  mainElement.appendChild(document.createElement('br'))
+
+//end
 }
 
 

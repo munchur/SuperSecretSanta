@@ -71,13 +71,10 @@ app.post('/CreateEvent', function(req,res){
 app.post('/makeMatches', function(req, res){
   //TODO: later on add express-validator to help validate data
   console.log('making matches')
-  console.log(req.body.single1)//works
   //header
   console.log(req.headers)
-  //capture the encoded form data
-  req.on('data', function(data){
-    console.log(data.toString())
-  })
+  //print data
+  console.log(req.body)
 
   /*
   dbqueries.makeMatches({
