@@ -75,19 +75,16 @@ app.post('/makeMatches', function(req, res){
   console.log(req.headers)
   //print data
   console.log(req.body)
-
-  /*
-  dbqueries.makeMatches({
-    time: req.body[0].time,
-    date: req.body[0].date,
-    location: req.body[0].location,
-    message: req.body[0].message,
-    singleValue: req.body[0].singleValue,
-    coupleValue: req.body[0].coupleValue,
-    //singleGroup: req.body[1],
-    //coupleGroup: req.body[2]
+  dbqueries.createEvent({
+    time: req.body.time,
+    date: req.body.date,
+    location: req.body.location,
+    message: req.body.message,
+    singleValue: req.body.singleValue,
+    coupleValue: req.body.coupleValue
   })
-  .then(() => res.sendStatus(200))*/
+  //need another function to insert people
+  //.then(() => res.sendStatus(200))
   res.sendStatus(200)
 })
 
