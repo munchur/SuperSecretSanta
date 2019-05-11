@@ -18,14 +18,16 @@ function post(path, data){
 }
 */
 
-window.fetch('/makeMatches').then(function(response){
-  if(response.status == 200){
-    console.log('Success!')
-    window.location.href = '/ThankYou'
-  }else if(response.status == 400){
-    console.log('Failure!')
-  }else{console.log('Different Status')}
-})
+function postMatches(){
+  var xhttp = new XMLHttpRequest()
+  xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      window.href.location = '/ThankYou'
+    }
+  }
+  xhttp.open("POST", "", true)
+  xhttp.send()
+}
 
 //load the values from sessionStorage and help add input children to
 //the form id 'container' in makeMatches.html
