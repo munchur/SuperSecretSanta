@@ -18,15 +18,25 @@ function post(path, data){
 }
 */
 
-function postMatches(){
+
+function postMatches(form){
+  /*
+  let formData = new FormData(form)
+  for(var pair of formData.entries()){
+    console.log("key: "+ pair[0] + " value: " + pair[1])
+  }
+  */
   var xhttp = new XMLHttpRequest()
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
-      window.href.location = '/ThankYou'
+      //window.href.location = '/ThankYou'
+      alert("Thankyou")
     }
   }
-  xhttp.open("POST", "", true)
-  xhttp.send()
+  xhttp.open('POST', 'http://localhost:3000/makeMatches', true)
+  xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+  xhttp.send(new FormData(form))
+  return false
 }
 
 //load the values from sessionStorage and help add input children to

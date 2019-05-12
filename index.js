@@ -51,6 +51,7 @@ app.get('/', function(req,res){
   res.sendFile(__dirname + '/views/index.html')
 })
 
+/* NOT IN USE AT THE MOMENT
 app.post('/CreateEvent', function(req,res){
   //if emtpy return error
   if(!req.body) return res.sendStatus(400)
@@ -66,7 +67,7 @@ app.post('/CreateEvent', function(req,res){
   })
   .then(() => res.sendStatus(200))
 })
-
+*/
 
 app.post('/makeMatches', function(req, res){
   //TODO: later on add express-validator to help validate data
@@ -75,6 +76,7 @@ app.post('/makeMatches', function(req, res){
   console.log(req.headers)
   //print data
   console.log(req.body)
+  /*
   dbqueries.createEvent({
     time: req.body.time,
     date: req.body.date,
@@ -82,7 +84,7 @@ app.post('/makeMatches', function(req, res){
     message: req.body.message,
     singleValue: req.body.singleValue,
     coupleValue: req.body.coupleValue
-  })
+  })*/
   //need another function to insert people
   //.then(() => res.sendStatus(200))
   res.sendStatus(200)
