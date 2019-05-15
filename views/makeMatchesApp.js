@@ -26,6 +26,8 @@ function postMatches(form){
     console.log("key: "+ pair[0] + " value: " + pair[1])
   }
   */
+  var urlEncodedData = makeUrlEncoded(form)
+
   var xhttp = new XMLHttpRequest()
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
@@ -33,10 +35,37 @@ function postMatches(form){
       alert("Thankyou")
     }
   }
-  xhttp.open('POST', 'http://localhost:3000/makeMatches', true)
+  xhttp.open(form.method, form.action, true)
   xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-  xhttp.send(new FormData(form))
+  //xhttp.send(new FormData(form))
+  xhttp.send(makeUrlEncoded(form))
   return false
+}
+
+function makeUrlEncoded(form){
+  //urlencoded format is key=value&key=value&...
+  var dataPairs = []
+  var urlEncodedData = ''
+  const singleValue = sessionStorage.getItem('singleValue')
+  const coupleValue = sessionStorage.getItem('coupleValue')
+  dataPairs.push('time=' + sessionStorage.getItem('time'))
+  dataPairs.push('date=' + sessionStorage.getItem('date'))
+  dataPairs.push('location=' + sessionStorage.getItem('location'))
+  dataPairs.push('message=' + sessionStorage.getItem('message'))
+  dataPairs.push('singleValue=' + singleValue)
+  dataPairs.push('coupleValue=' + coupleValue)
+  for(i=1; i<= singleValue; ++i){
+    dataPairs.push(encodeURIComponent('single'+i) + '=' + encodeURIComponent(form['single'+i].value))
+    dataPairs.push(encodeURIComponent('single'+i+'email') + '=' + encodeURIComponent(form['single'+i+'email'].value))
+  }
+  for(i=1; i<= coupleValue; ++i){
+    dataPairs.push(encodeURIComponent('couple'+i) + '=' + encodeURIComponent(form['couple'+i].value))
+    dataPairs.push(encodeURIComponent('couple'+i+'email') + '=' + encodeURIComponent(form['couple'+i+'email'].value))
+  }
+  //combine the pairs into a single string and replace
+  urlEncodedData = dataPairs.join('&').replace(/%20/g, '+')
+  //console.log(urlEncodedData)
+  return urlEncodedData
 }
 
 //load the values from sessionStorage and help add input children to
@@ -111,7 +140,7 @@ function loadValues(){
   submitButton.type = 'submit'
   submitButton.value = 'Submit'
   mainElement.appendChild(submitButton)
-
+/*
   //adding hidden input to have the values of time, date,
   //location, message, singlevalue, couplevalue
   //Using this method so these valus can be passed with the post request
@@ -151,7 +180,7 @@ function loadValues(){
   mainElement.appendChild(document.createElement('br'))
   mainElement.appendChild(couple)
   mainElement.appendChild(document.createElement('br'))
-
+*/
 //end
 }
 

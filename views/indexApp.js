@@ -10,7 +10,6 @@ createEvent.addEventListener('submit', function(err){
   const message = createEvent.querySelector('.message').value
   const singles = createEvent.querySelector('.singlesValue').value
   const couples = createEvent.querySelector('.couplesValue').value
-  console.log(time, date, location, message, singles, couples)
 /* keep, just commented out temporarily
   post('/CreateEvent', {time, date, location, message, singles, couples})
     .then(({status})=>{

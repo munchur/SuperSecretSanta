@@ -75,7 +75,7 @@ app.post('/makeMatches', function(req, res){
   //header
   console.log(req.headers)
   //print data
-  console.log(req.body)
+  console.log("time: "+req.body.time)
   /*
   dbqueries.createEvent({
     time: req.body.time,
@@ -87,7 +87,7 @@ app.post('/makeMatches', function(req, res){
   })*/
   //need another function to insert people
   //.then(() => res.sendStatus(200))
-  res.sendStatus(200)
+  //res.sendStatus(200)
 })
 
 //start server
