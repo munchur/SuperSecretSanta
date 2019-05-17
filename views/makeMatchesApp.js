@@ -17,13 +17,13 @@ function postMatches(form){
 //a urlencoded string to be passed into the post request
 function makeUrlEncoded(form){
   //urlencoded format is key=value&key=value&...
-  //put all of the information into an object to put in a (key,value) pair then
+  //put all of the information into an array to put in a (key,value) pair then
   //will then turn into a string
   var dataPairs = []
   var urlEncodedData = ''
   const singleValue = sessionStorage.getItem('singleValue')
   const coupleValue = sessionStorage.getItem('coupleValue')
-  //information from previous form push into the dataPairs object
+  //information from previous form push into the dataPairs array
   dataPairs.push('time=' + sessionStorage.getItem('time'))
   dataPairs.push('date=' + sessionStorage.getItem('date'))
   dataPairs.push('location=' + sessionStorage.getItem('location'))

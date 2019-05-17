@@ -1,8 +1,7 @@
 //take the values from the inputs in the form section
 //then send them to the database
-const createEvent = document.querySelector('.createEvent')
+const createEvent = document.querySelector('.createBasicInfo')
 createEvent.addEventListener('submit', function(err){
-  console.log('starting in app.js')
   err.preventDefault()
   const time = createEvent.querySelector('.time').value
   const date = createEvent.querySelector('.date').value
@@ -30,7 +29,7 @@ createEvent.addEventListener('submit', function(err){
   sessionStorage.setItem('coupleValue', parseInt(couples*2))
 
   //just automatically go to the '/CreateEvent' page after successfully the form
-  window.location.href = '/CreateEvent'
+  window.location.href = '/MakeMatches'
 })
 
 //used to send data to server to create new entries

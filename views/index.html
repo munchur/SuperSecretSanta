@@ -14,7 +14,7 @@
     </p>
 
     <!-- form to ask how many singles and couples -->
-    <form  action="/CreateEvent" method="post" class="createEvent" onsubmit="return validateGroupTotal(this)">
+    <form class="createBasicInfo" onsubmit="return validateGroupTotal(this)">
       Please put in the amount of singles and couples there will be.<br>
       There needs to be 5 or more in total.<br>
       Time:
@@ -32,7 +32,6 @@
       <input type="number" class="couplesValue" name="couplesValue" required><br>
       <input type="submit" value="submit">
     </form>
-    <p id="errorMessageOne"></p>
     <script src="/indexApp.js"></script>
   </body>
 </html>

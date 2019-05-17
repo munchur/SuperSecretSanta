@@ -1,5 +1,4 @@
 const knex = require('knex')(require('./knexfile.js'))
-const generateID = require('./generateID.js')
 module.exports = {
   //creates new resource
   createEvent({time, date, location, message, singles, couples}){
@@ -17,13 +16,17 @@ module.exports = {
   makeMatches({singleData, coupleData}){
     console.log('in makeMatches...')
     const mixAndMatches = mixAndMatch(singleData, coupleData)
-    //use knex to insert 
+    //use knex to insert
   }
 }
 
 //TODO: function to mix and match couples
 function mixAndMatch({singleData, coupleData}){
   //should return a mix and matches
+}
+
+function generateID(){
+  return Math.random().toString(36).replace('0.', '')
 }
 
 //looks up a resource if there is a match

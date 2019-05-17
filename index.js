@@ -29,16 +29,13 @@ router.get('/CreateEvent', function(req, res){
 
 //express usage starts here
 app.use(express.static(__dirname + '/views'))
-//app.use(express.static(__dirname + '/public/index.html'))
-//app.use('/', router)
-//app.engine('html', engines.mustache)
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 //listens for a post request /CreateEvent
 //MAYBE DO: app.route to do post and get requests
-app.get('/CreateEvent', function(req, res){
-  console.log('get /createevent')
+app.get('/MakeMatches', function(req, res){
+  console.log('get /MakeMatches')
   res.sendFile(__dirname + '/views/makeMatches.html')
 })
 
@@ -51,32 +48,11 @@ app.get('/', function(req,res){
   res.sendFile(__dirname + '/views/index.html')
 })
 
-/* NOT IN USE AT THE MOMENT
-app.post('/CreateEvent', function(req,res){
-  //if emtpy return error
-  if(!req.body) return res.sendStatus(400)
-  //else send event info to db
-  console.log('creating event...')
-  dbqueries.createEvent({
-    time: req.body.time,
-    date: req.body.date,
-    location: req.body.location,
-    message: req.body.message,
-    singles: req.body.singles,
-    couples: req.body.couples
-  })
-  .then(() => res.sendStatus(200))
-})
-*/
 
-app.post('/makeMatches', function(req, res){
+app.post('/CreateEvent', function(req, res){
   //TODO: later on add express-validator to help validate data
-  console.log('making matches')
-  //header
-  console.log(req.headers)
-  //print data
-  console.log(req.body)
-  /*
+  if(!req.body) return res.sendStatus(400)
+  console.log('saving event info')
   dbqueries.createEvent({
     time: req.body.time,
     date: req.body.date,
@@ -84,7 +60,10 @@ app.post('/makeMatches', function(req, res){
     message: req.body.message,
     singleValue: req.body.singleValue,
     coupleValue: req.body.coupleValue
-  })*/
+  })
+  for(i=1; i<=req.body.singleValue; ++i){
+    console.log(req.body['single'+i] + " " + req.body['single'+i+'email'])
+  }
   //need another function to insert people
   //.then(() => res.sendStatus(200))
   res.sendStatus(200)
