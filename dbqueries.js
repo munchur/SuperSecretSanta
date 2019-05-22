@@ -2,19 +2,19 @@ const knex = require('knex')(require('./knexfile.js'))
 module.exports = {
   //creates new resource
   createEvent({time, date, location, message, singles, couples}){
-    console.log('in dbqueries...')
-    return knex('basic_info').insert({
-//      groupID: (singles*couples*44),
+    var groupID = generateID
+    knex('basic_info').insert({
+      groupID : groupID,
       time: time,
       date: date,
       location: location,
       message: message,
       singles: singles,
       couples: couples})
+    return groupID
   },
 
-  makeMatches({singleData, coupleData}){
-    console.log('in makeMatches...')
+  saveGroup(sGroup, cGroup, groupID){
     const mixAndMatches = mixAndMatch(singleData, coupleData)
     //use knex to insert
   }

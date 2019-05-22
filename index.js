@@ -53,7 +53,7 @@ app.post('/CreateEvent', function(req, res){
   //TODO: later on add express-validator to help validate data
   if(!req.body) return res.sendStatus(400)
   console.log('saving event info')
-  dbqueries.createEvent({
+  var groupID = dbqueries.createEvent({ //needs to return unique id
     time: req.body.time,
     date: req.body.date,
     location: req.body.location,
@@ -61,10 +61,26 @@ app.post('/CreateEvent', function(req, res){
     singleValue: req.body.singleValue,
     coupleValue: req.body.coupleValue
   })
-  for(i=1; i<=req.body.singleValue; ++i){
-    console.log(req.body['single'+i] + " " + req.body['single'+i+'email'])
+  sValue = req.body.singlesValue
+  cValue = req.body.coupleValue
+  sGroup = {}
+  cGroup = {}
+  if(sValue != 0){
+    for(i=1; i<=sValue; ++i){
+      //console.log(req.body['single'+i] + " " + req.body['single'+i+'email'])
+      sGroup['single'+i] = req.body['single'+i]
+      sGroup['single'+i+'email'] = req.body['single'+i+'email']
+    }
+  }
+  if(cValue != 0){
+    for(i=1;i<=req.body.coupleValue;++i){
+      //console.log(req.body['couple'+i] + " " + req.body['couple'+i+'email'])
+      sGroup['couple'+i] = req.body['couple'+i]
+      sGroup['couple'+i+'email'] = req.body['couple'+i+'email']
+    }
   }
   //need another function to insert people
+  dbqueries.saveGroup(sGroup, cGroup, groupID)
   //.then(() => res.sendStatus(200))
   res.sendStatus(200)
 })
