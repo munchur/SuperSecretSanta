@@ -63,24 +63,29 @@ app.post('/CreateEvent', function(req, res){
   })
   sValue = req.body.singlesValue
   cValue = req.body.coupleValue
-  sGroup = {}
-  cGroup = {}
+  group = []
   if(sValue != 0){
     for(i=1; i<=sValue; ++i){
       //console.log(req.body['single'+i] + " " + req.body['single'+i+'email'])
-      sGroup['single'+i] = req.body['single'+i]
-      sGroup['single'+i+'email'] = req.body['single'+i+'email']
+      group.push({
+        'single'+i : req.body['single'+i],
+        'single'+i+'email' : req.body['single'+i+'email'],
+        'status' : 'single'
+      })
     }
   }
   if(cValue != 0){
     for(i=1;i<=req.body.coupleValue;++i){
       //console.log(req.body['couple'+i] + " " + req.body['couple'+i+'email'])
-      sGroup['couple'+i] = req.body['couple'+i]
-      sGroup['couple'+i+'email'] = req.body['couple'+i+'email']
+      group.push({
+        'couple'+i : req.body['couple'+i],
+        'couple'+i+'email' : req.body['couple'+i+'email'],
+        'status' : 'couple'+i
+      })
     }
   }
   //need another function to insert people
-  dbqueries.saveGroup(sGroup, cGroup, groupID)
+  dbqueries.saveGroup(group, groupID)
   //.then(() => res.sendStatus(200))
   res.sendStatus(200)
 })

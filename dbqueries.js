@@ -14,7 +14,7 @@ module.exports = {
     return groupID
   },
 
-  saveGroup(sGroup, cGroup, groupID){
+  saveGroup(group, groupID){
     const mixAndMatches = mixAndMatch(singleData, coupleData)
     //use knex to insert
   }
