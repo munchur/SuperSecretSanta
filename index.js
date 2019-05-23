@@ -78,8 +78,13 @@ app.post('/CreateEvent', function(req, res){
     for(i=1;i<=req.body.coupleValue;++i){
       //console.log(req.body['couple'+i] + " " + req.body['couple'+i+'email'])
       group.push({
-        'couple'+i : req.body['couple'+i],
-        'couple'+i+'email' : req.body['couple'+i+'email'],
+        'couple'+i : req.body['couple'+i+'a'],
+        'couple'+i+'email' : req.body['couple'+i+'a'+'email'],
+        'status' : 'couple'+i
+      })
+      group.push({
+        'couple'+i : req.body['couple'+i+'b'],
+        'couple'+i+'email' : req.body['couple'+i+'b'+'email'],
         'status' : 'couple'+i
       })
     }

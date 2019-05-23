@@ -22,7 +22,7 @@ function makeUrlEncoded(form){
   var dataPairs = []
   var urlEncodedData = ''
   const singleValue = sessionStorage.getItem('singleValue')
-  const coupleValue = sessionStorage.getItem('coupleValue')
+  const coupleValue = sessionStorage.getItem('coupleValue') //not doubled
   //information from previous form push into the dataPairs array
   dataPairs.push('time=' + sessionStorage.getItem('time'))
   dataPairs.push('date=' + sessionStorage.getItem('date'))
@@ -39,8 +39,10 @@ function makeUrlEncoded(form){
   }
   if(coupleValue != 0){
     for(i=1; i<= coupleValue; ++i){
-      dataPairs.push(encodeURIComponent('couple'+i) + '=' + encodeURIComponent(form['couple'+i].value))
-      dataPairs.push(encodeURIComponent('couple'+i+'email') + '=' + encodeURIComponent(form['couple'+i+'email'].value))
+      dataPairs.push(encodeURIComponent('couple'+i+'a') + '=' + encodeURIComponent(form['couple'+i+'a'].value))
+      dataPairs.push(encodeURIComponent('couple'+i+'a'+'email') + '=' + encodeURIComponent(form['couple'+i+'a'+'email'].value))
+      dataPairs.push(encodeURIComponent('couple'+i+'b') + '=' + encodeURIComponent(form['couple'+i+'b'].value))
+      dataPairs.push(encodeURIComponent('couple'+i+'b'+'email') + '=' + encodeURIComponent(form['couple'+i+'b'+'email'].value))
     }
   }
   //combine the pairs into a single string and replace
@@ -53,7 +55,7 @@ function makeUrlEncoded(form){
 //the form id 'container' in makeMatches.html
 function loadValues(){
   const singleValue = sessionStorage.getItem('singleValue')
-  const coupleValue = sessionStorage.getItem('coupleValue') //already doubled
+  const coupleValue = sessionStorage.getItem('coupleValue') //not doubled
 
   //this should be the <form>
   var mainElement = document.getElementById('container')
@@ -99,18 +101,34 @@ function loadValues(){
     //add couples input fields
     for(i=1;i<=coupleValue;i++){
       //create a text node
-      mainElement.appendChild(document.createTextNode('Couple '+i+' name'))
+      mainElement.appendChild(document.createTextNode('Couple '+i+'a'+' name'))
       //create input create by creating the input element then set it
       var inputName = document.createElement('input')
       inputName.type = 'text'
-      inputName.name = 'couple'+i
-      inputName.className = 'couple'+i
+      inputName.name = 'couple'+i+'a'
+      inputName.className = 'couple'+i+'a'
       mainElement.appendChild(inputName)
       mainElement.appendChild(document.createTextNode('Email'))
       var inputEmail = document.createElement('input')
       inputEmail.type = 'email'
-      inputEmail.name = 'couple'+i+'email'
-      inputEmail.className = 'couple'+i+'email'
+      inputEmail.name = 'couple'+i+'a'+'email'
+      inputEmail.className = 'couple'+i+'a'+'email'
+      mainElement.appendChild(inputEmail)
+      mainElement.appendChild(document.createElement('br'))
+
+      //create a text node
+      mainElement.appendChild(document.createTextNode('Couple '+i+'b'+' name'))
+      //create input create by creating the input element then set it
+      var inputName = document.createElement('input')
+      inputName.type = 'text'
+      inputName.name = 'couple'+i+'b'
+      inputName.className = 'couple'+i+'b'
+      mainElement.appendChild(inputName)
+      mainElement.appendChild(document.createTextNode('Email'))
+      var inputEmail = document.createElement('input')
+      inputEmail.type = 'email'
+      inputEmail.name = 'couple'+i+'b'+'email'
+      inputEmail.className = 'couple'+i+'b'+'email'
       mainElement.appendChild(inputEmail)
       mainElement.appendChild(document.createElement('br'))
     }

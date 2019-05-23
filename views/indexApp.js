@@ -26,8 +26,8 @@ createEvent.addEventListener('submit', function(err){
   //keep
   //use to avoid global variables
   sessionStorage.setItem('singleValue', parseInt(singles))
-  sessionStorage.setItem('coupleValue', parseInt(couples*2))
-
+  //sessionStorage.setItem('coupleValue', parseInt(couples*2))
+  sessionStorage.setItem('coupleValue', parseInt(couples))
   //just automatically go to the '/CreateEvent' page after successfully the form
   window.location.href = '/MakeMatches'
 })

@@ -15,14 +15,24 @@ module.exports = {
   },
 
   saveGroup(group, groupID){
-    const mixAndMatches = mixAndMatch(singleData, coupleData)
+    const mixAndMatches = mixAndMatch(group)
     //use knex to insert
   }
 }
 
 //TODO: function to mix and match couples
-function mixAndMatch({singleData, coupleData}){
+function mixAndMatch(group){
   //should return a mix and matches
+  const max = group.length
+  //arrayID = [1,2,3,4,5,...]
+  var arrayID = []
+  int i = 0
+  while(i > max){
+    arrayID.push(i)
+    i++
+  }
+  //shuffle
+  //make sure couples don't get each other
 }
 
 function generateID(){
@@ -31,9 +41,4 @@ function generateID(){
 
 //looks up a resource if there is a match
 function lookUpID(){
-  console.log('making id')
-  var id = generateID.genID()
-
-  console.log(query)
-  return id;
 }
