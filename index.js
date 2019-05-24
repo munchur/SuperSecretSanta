@@ -75,16 +75,16 @@ app.post('/CreateEvent', function(req, res){
     }
   }
   if(cValue != 0){
-    for(i=1;i<=req.body.coupleValue;++i){
+    for(i=1;i<=cValue;++i){
       //console.log(req.body['couple'+i] + " " + req.body['couple'+i+'email'])
       group.push({
         'couple'+i : req.body['couple'+i+'a'],
-        'couple'+i+'email' : req.body['couple'+i+'a'+'email'],
+        'couple'+i+'a'+'email' : req.body['couple'+i+'a'+'email'],
         'status' : 'couple'+i
       })
       group.push({
         'couple'+i : req.body['couple'+i+'b'],
-        'couple'+i+'email' : req.body['couple'+i+'b'+'email'],
+        'couple'+i+'b'+'email' : req.body['couple'+i+'b'+'email'],
         'status' : 'couple'+i
       })
     }

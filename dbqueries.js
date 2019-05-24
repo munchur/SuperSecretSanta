@@ -25,14 +25,29 @@ function mixAndMatch(group){
   //should return a mix and matches
   const max = group.length
   //arrayID = [1,2,3,4,5,...]
-  var arrayID = []
+  //used to keep track of which position has gotten
+  //assigned a secret santa
+  var selectorID = []
+  var assignID = []
   int i = 0
   while(i > max){
-    arrayID.push(i)
+    selectorID.push(i)
+    assignID.push(i)
     i++
   }
   //shuffle
   //make sure couples don't get each other
+  //get a random index number
+  var selector = randomIndex(max) // 0 to max
+  var assignTo = randomIndex(max)
+  while(selectorID[selector] != 99 && assignID[assignTo] != 99 && selector != assignTo){
+    //check if couple
+    groupID[selector].status == 'couple'
+  }
+}
+
+function randomIndex(max){
+  return Math.floor((Math.random() * max))
 }
 
 function generateID(){
