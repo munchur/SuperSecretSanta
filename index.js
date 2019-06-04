@@ -59,7 +59,7 @@ app.post('/CreateEvent', function(req, res){
     location: req.body.location,
     message: req.body.message,
     singleValue: req.body.singleValue,
-    coupleValue: req.body.coupleValue
+    coupleValue: req.body.coupleValue //should not be doubled
   })
   sValue = req.body.singlesValue
   cValue = req.body.coupleValue
