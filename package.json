@@ -25,7 +25,7 @@
     "knex": "^0.16.3",
     "mustache": "^3.0.1",
     "mysql": "^2.16.0",
-    "properties-reader": "0.0.16"
+    "properties-reader": "2.2.0"
   },
   "devDependencies": {
     "pm2": "^3.4.1"
