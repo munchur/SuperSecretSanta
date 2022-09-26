@@ -28,6 +28,6 @@
     "properties-reader": "0.0.16"
   },
   "devDependencies": {
-    "pm2": "^3.4.1"
+    "pm2": "^5.2.0"
   }
 }
